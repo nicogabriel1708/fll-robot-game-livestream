@@ -1,6 +1,33 @@
-.team-select-page__container {
+.team-select-page__wrapper {
 	width: 100%;
 	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.team-select-page__container {
+	width: 80%;
+	max-width: 600px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 40px;
+	text-align: center;
+}
+
+.team-select-page__container > h1,
+.team-select-page__container > p {
+	margin: 0;
+}
+
+.team-select-page__container > div {
+	width: 100%;
+}
+
+.team-name-select {
+	text-align: left;
 }
 
 .team-name-select:hover,

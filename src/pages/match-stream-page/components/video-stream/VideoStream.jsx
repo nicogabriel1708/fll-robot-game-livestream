@@ -12,7 +12,7 @@ const VideoStream = ({ teamColor }) => {
 			<img
 				src={VIDEO_STREAM_SOURCES[teamColor]}
 				alt={`${capitalizeFirstLetter(teamColor)} Team Video`}
-				className={`video-stream ${!isVideoStreamLoaded ? "hidden" : ""}`}
+				className={`video-stream video-stream--${teamColor} ${!isVideoStreamLoaded ? "hidden" : ""}`}
 				onLoad={() => setIsVideoStreamLoaded(true)}
 				onError={() => setIsVideoStreamLoaded(false)}
 			/>

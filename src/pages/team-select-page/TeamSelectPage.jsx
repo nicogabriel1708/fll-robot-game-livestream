@@ -64,23 +64,29 @@ const TeamSelectPage = ({
 	};
 
 	return (
-		<div className="team-select-page__container">
-			<h1>{isTeamNameUploadRequired ? "Upload Team Names" : "Select Teams"}</h1>
-			<p>
-				{isTeamNameUploadRequired
-					? "Upload a text file (.txt) containing at least two team names (one per line) to proceed."
-					: "Select both teams to continue to the match stream."}
-			</p>
-			{!isTeamNameUploadRequired && renderTeamNameSelect(TeamColor.RED, blueTeamName)}
-			{!isTeamNameUploadRequired && renderTeamNameSelect(TeamColor.BLUE, redTeamName)}
-			{isTeamNameUploadRequired ? (
-				<button onClick={triggerFileInputClick}>Upload</button>
-			) : (
-				<button onClick={goToMatchStream} disabled={!redTeamName || !blueTeamName}>
-					Continue
-				</button>
-			)}
-			<input ref={fileInputRef} type="file" accept=".txt" className="hidden" onChange={onFileInputChange} />
+		<div className="team-select-page__wrapper">
+			<div className="team-select-page__container">
+				<h1>{isTeamNameUploadRequired ? "Upload Team Names" : "Select Teams"}</h1>
+				<p>
+					{isTeamNameUploadRequired
+						? "Upload a text file (.txt) containing at least two team names (one per line) to proceed."
+						: "Select both teams to continue to the match stream."}
+				</p>
+				{!isTeamNameUploadRequired && (
+					<div>
+						{renderTeamNameSelect(TeamColor.RED, blueTeamName)}
+						{renderTeamNameSelect(TeamColor.BLUE, redTeamName)}
+					</div>
+				)}
+				{isTeamNameUploadRequired ? (
+					<button onClick={triggerFileInputClick}>Upload</button>
+				) : (
+					<button onClick={goToMatchStream} disabled={!redTeamName || !blueTeamName}>
+						Continue
+					</button>
+				)}
+				<input ref={fileInputRef} type="file" accept=".txt" className="hidden" onChange={onFileInputChange} />
+			</div>
 		</div>
 	);
 };
