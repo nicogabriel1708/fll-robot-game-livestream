@@ -1,5 +1,6 @@
 .video-stream__wrapper {
 	overflow: hidden;
+	position: relative; /* Wichtig für absolute Positionierung des Loaders */
 }
 
 .video-stream__wrapper--red {
@@ -14,12 +15,21 @@
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
+	/* --- NEU: Smooth Transition für den Zoom-Effekt --- */
+	transition: object-position 0.5s ease-in-out;
 }
 
+/* Standard-Ansicht (Rausgezoomt) */
 .video-stream--red {
-	object-position: right center;
+	object-position: right center; /* Zeigt den linken Tisch (Rechtsbündig gecroppt) */
 }
 
 .video-stream--blue {
-	object-position: left center;
+	object-position: left center; /* Zeigt den rechten Tisch (Linksbündig gecroppt) */
+}
+
+/* --- NEU: Tracking-Ansicht (Reingezoomt) --- */
+/* Wenn diese Klasse aktiv ist, wird das Bild zentriert */
+.video-stream.is-tracking {
+	object-position: center center !important;
 }

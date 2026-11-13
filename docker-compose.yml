@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+    fll-robot-game-livestream:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: nicogabriel1708/fll-robot-game-livestream:latest
+        container_name: fll-robot-game-livestream_container
+        ports:
+            - "3000:80"
+        restart: unless-stopped
